@@ -1,0 +1,29 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: workshop-postgres
+spec:
+  description: "Workshop PostgreSQL Cluster"
+  instances: 1
+
+  postgresql:
+    parameters:
+      shared_buffers: 256MB
+      max_connections: "100"
+
+  storage:
+    size: 1Gi
+
+  bootstrap:
+    initdb:
+      database: workshopdb
+      owner: app
+      secret:
+        name: workshop-postgres-app-user
+
+  superuserSecret:
+    name: workshop-postgres-superuser
+
+  monitoring:
+    enablePodMonitor: true
+
