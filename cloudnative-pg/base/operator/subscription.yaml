@@ -4,7 +4,7 @@ metadata:
   name: cloudnative-pg
   namespace: openshift-operators
 spec:
-  channel: stable
+  channel: stable-v1
   installPlanApproval: Automatic
   name: cloudnative-pg
   source: community-operators
