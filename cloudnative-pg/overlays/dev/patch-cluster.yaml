@@ -6,9 +6,9 @@ spec:
   instances: 1
   resources:
     requests:
-      memory: "256Mi"
-      cpu: "0.1"
+      memory: "1024Mi"
+      cpu: "2"
     limits:
-      memory: "512Mi"
-      cpu: "0.5"
+      memory: "8192Mi"
+      cpu: "6"
 
