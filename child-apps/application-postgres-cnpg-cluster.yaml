@@ -3,6 +3,11 @@ kind: Application
 metadata:
   name: postgres-cnpg-app
   namespace: openshift-gitops
+  annotations:
+    # Assign to Wave 1 - deploy this second, only after Wave 0 is Healthy
+    argocd.argoproj.io/sync-wave: "1"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: workshop-dev

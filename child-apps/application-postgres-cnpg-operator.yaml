@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgres-cnpg-operator
+  namespace: openshift-gitops
+  annotations:
+  # Assign to Wave 0 - deploy this first
+    argocd.argoproj.io/sync-wave: "0"
+ finalizers:
+    - resources-finalizer.argocd.argoproj.io
+
+spec:
+  destination:
+    namespace: workshop-dev
+    server: 'https://kubernetes.default.svc'
+    annotations:
+    # Assign to Wave 0 - deploy this first
+       argocd.argoproj.io/sync-wave: "0"
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
+  project: default
+  source:
+    path: cloudnative-pg/base/operator
+    repoURL: 'https://github.com/tomazb/postgres-cloudnativepg-gitops'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
