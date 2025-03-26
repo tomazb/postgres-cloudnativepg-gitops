@@ -8,9 +8,9 @@ spec:
     size: 20Gi
   resources:
     requests:
-      memory: "2048Mi"
+      memory: "2Gi"
       cpu: "2"
     limits:
-      memory: "8192Mi"
+      memory: "8Gi"
       cpu: "6"
 
